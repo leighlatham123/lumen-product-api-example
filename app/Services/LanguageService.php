@@ -20,8 +20,8 @@ class LanguageService
      */
     public function __construct()
     {
-        self::$_log = new Log;
-        self::$_language = new Language;
+        self::$_log         = new Log;
+        self::$_language    = new Language;
         $this->_log_channel = 'language';
     }
 
@@ -32,11 +32,11 @@ class LanguageService
      *
      * @return array
      */
-    public function getLanguage($locale)
+    public function getLanguage(string $locale): array
     {
         try
         {
-            return self::$_language::whereLocale($locale)->firstOrFail();
+            $language = self::$_language::whereLocale($locale)->firstOrFail();
         }
         catch(ModelNotFoundException $e)
         {
@@ -54,6 +54,8 @@ class LanguageService
 
             throw new UnhandledException(__(config('constants.messages.errors.unexpected')));
         }
+
+        return $language->toArray();
     }
 }
 

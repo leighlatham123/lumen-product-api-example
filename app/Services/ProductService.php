@@ -21,8 +21,8 @@ class ProductService
      */
     public function __construct()
     {
-        self::$_log = new Log;
-        self::$_product = new Product;
+        self::$_log         = new Log;
+        self::$_product     = new Product;
         $this->_log_channel = 'product';
     }
 

@@ -31,7 +31,7 @@ class TranslationService
         $this->_language = self::$_language_service->getLanguage($locale);
 
         return self::$_translation::whereIn('product_id', $product_ids)
-            ->whereLanguageId($this->_language->id)
+            ->whereLanguageId($this->_language['id'])
             ->get()
             ->toArray();
     }

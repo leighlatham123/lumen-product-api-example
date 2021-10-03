@@ -5,30 +5,30 @@ namespace App\Interfaces;
 interface CrudInterface
 {
     /**
-     * Undocumented function
+     * Create record
      *
-     * @return mixed
+     * @return \Illuminate\Http\JsonResponse
      */
     public function create();
 
     /**
-     * Undocumented function
+     * Read record
      *
-     * @return mixed
+     * @return \Illuminate\Http\JsonResponse
      */
     public function read();
 
     /**
-     * Undocumented function
+     * Update record
      *
-     * @return mixed
+     * @return \Illuminate\Http\JsonResponse
      */
     public function update();
 
     /**
-     * Undocumented function
+     * Delete record
      *
-     * @return mixed
+     * @return \Illuminate\Http\JsonResponse
      */
     public function delete();
 }

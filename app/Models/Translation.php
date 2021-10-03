@@ -18,6 +18,11 @@ class Translation extends Model
 
     public $timestamps = false;
 
+    protected $hidden = [
+        'language_id',
+        'product_id'
+    ];
+
     /**
      * Get the translated version of the product.
      */

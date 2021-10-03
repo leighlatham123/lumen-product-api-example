@@ -28,20 +28,18 @@ class ProductController extends Controller implements CrudInterface
      */
     public function __construct(Request $request)
     {
-        $this->_req = $request;
-        $this->category = $request['product_category'];
-        self::$_product = new Services\ProductService;
-        self::$_request = new Services\RequestService;
-        self::$_response = new Services\ResponseService;
-        self::$_translate = new Services\TranslationService;
+        $this->_req         = $request;
+        $this->category     = $request['product_category'];
+        self::$_product     = new Services\ProductService;
+        self::$_request     = new Services\RequestService;
+        self::$_response    = new Services\ResponseService;
+        self::$_translate   = new Services\TranslationService;
 
-        $this->_locale = self::$_request->getRequestLocalization($this->_req);
+        $this->_locale      = self::$_request->getRequestLocalization($this->_req);
     }
 
     /**
-     * Create a product model
-     *
-     * @return mixed
+     * @inheritdoc
      */
     public function create()
     {
@@ -62,9 +60,7 @@ class ProductController extends Controller implements CrudInterface
     }
 
     /**
-     * Read a product model
-     *
-     * @return mixed
+     * @inheritdoc
      */
     public function read()
     {
@@ -85,9 +81,7 @@ class ProductController extends Controller implements CrudInterface
     }
 
     /**
-     * Update a product model
-     *
-     * @return void
+     * @inheritdoc
      */
     public function update()
     {
@@ -109,9 +103,7 @@ class ProductController extends Controller implements CrudInterface
     }
 
     /**
-     * Delete a product model
-     *
-     * @return void
+     * @inheritdoc
      */
     public function delete()
     {

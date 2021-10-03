@@ -48,14 +48,16 @@ class RequestService
      *
      * @return void
      */
-    public function validateRequest(Request $request, array $rules)
+    public function validateRequest(Request $request, array $rules): void
     {
         $validation = self::$_validator::make(
             $request->all(),
             $rules
         );
 
-        return $this->_checkValidation($validation);
+        $this->_checkValidation($validation);
+
+        return;
     }
 
     /**

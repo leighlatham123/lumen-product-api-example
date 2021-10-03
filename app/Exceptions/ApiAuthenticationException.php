@@ -10,7 +10,9 @@ class ApiAuthenticationException extends Exception
     /**
      * Exception Render Method
      *
-     * @return response
+     * @throws HttpResponseException
+     *
+     * @return void
      */
     public function render()
     {
