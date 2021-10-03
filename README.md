@@ -15,7 +15,8 @@ Return the product adapted for that locale.
 - php artisan db:seed --class=DatabaseSeeder
 
 ### Environment Setup
-Important environment variables are the database and default user + pass as the application won't work without them
+Important environment variables are the database and default user + pass.
+If you fail to provide a default user name and pass the default values are: **secure_user** - **secure_password** for basic auth requests.
 
 ```
 # API Basic Auth Details
