@@ -1,0 +1,8 @@
+{
+    "error.incorrect_auth": "Incorrect authentication credentials",
+    "error.unexpected": "An unexpected error occurred during an interaction with the database. Please contact support",
+    "error.product_not_found": "Could not find product by the requested details during request",
+    "error.unsupported_language": "Unsupported language locale specified during request",
+    "error.language_not_found": "Language by the provided locale could not be found",
+    "error.product_not_removed": "Product could not be removed"
+}

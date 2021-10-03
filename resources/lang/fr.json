@@ -1,0 +1,8 @@
+{
+    "error.incorrect_auth": "Identifiants d'authentification incorrects",
+    "error.unexpected": "Une erreur inattendue s'est produite lors d'une interaction avec la base de données. Veuillez contacter l'assistance",
+    "error.product_not_found": "Impossible de trouver le produit par les détails demandés lors de la demande",
+    "error.unsupported_language": "Paramètres régionaux de langue non pris en charge spécifiés lors de la demande",
+    "error.language_not_found": "La langue par les paramètres régionaux fournis n'a pas pu être trouvée",
+    "error.product_not_removed": "Le produit n'a pas pu être supprimé"
+}
