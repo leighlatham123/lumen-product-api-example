@@ -1,24 +1,98 @@
-# Lumen PHP Framework
+#  Simple Lumen Product API example
+A simple boilerplate Lumen prodct API example using Basic Authentication
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://img.shields.io/packagist/dt/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://img.shields.io/packagist/v/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://img.shields.io/packagist/l/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
+## Objective
+Design and implement a RESTful API webservice to select, create, update and delete products for a given category.
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+Implement internationalisation to the service - Given a locale (en-gb, fr-ch). 
+Return the product adapted for that locale.
 
-## Official Documentation
+### Installation
+- Clone this repo into a directory locally/server
+- Navigate into the newly created directory
+- Copy or create an environment file as per the specifications outlined below
+- Run php artisan migrate
+- php artisan db:seed --class=DatabaseSeeder
 
-Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
+### Environment Setup
+Important environment variables are the database and default user + pass as the application won't work without them
 
-## Contributing
+```
+# API Basic Auth Details
+DEFAULT_USER_NAME=
+DEFAULT_USER_PASS=
 
-Thank you for considering contributing to Lumen! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+# Database info
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=homestead
+DB_USERNAME=homestead
+DB_PASSWORD=secret
+```
 
-## Security Vulnerabilities
+### Localisation
+To benefit from the localisation, you must set the 'Content-Language' header in your requests to the appropriate supported language.
+Only supports en or fr (English or French) out of the box.
 
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+To expand localisation, simply make the following changes.
 
-## License
+- Navigate to config/constants.php and add new array key => pair where key = locale and value is language
+- Insert new language data into 'languages' table
+- Insert translation for product into 'translations' table which joins onto 'languages' and 'products' table via their respective id values
+- Finally add any new error messsages or notifications you want to be supported by localisation to the existing or newly created Lumen language JSON files located in resources/lang
 
-The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Supported Commands
+This applications API works on a CRUD storage methodology
+
+#### Read products (GET) by category and (optional) product_name
+```
+{APP_URL}/product/read
+```
+JSON payload example
+```
+{
+    "product_category": "Category1"
+}
+```
+
+#### Create products (POST)
+```
+{APP_URL}/product/create
+```
+JSON payload example
+```
+{
+    "product_category": "Category1",
+    "product_name": "Test API product",
+    "product_desc": "Test API product description",
+    "product_price": "07.90"
+}
+```
+
+#### Update products (POST) and (optional) product_name
+```
+{APP_URL}/product/update
+```
+JSON payload example
+```
+{
+    "id": 3,
+    "product_category": "Category1",
+    "product_name": "Test API product",
+    "product_desc": "Test API product description",
+    "product_price": "09.90"
+}
+```
+
+#### Delete products (DELETE) by product id
+```
+{APP_URL}/product/delete
+```
+JSON payload example
+```
+{
+    "id": 3,
+    "product_category": "Category1"
+}
+```
