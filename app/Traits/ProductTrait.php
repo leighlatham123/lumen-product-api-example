@@ -55,7 +55,7 @@ trait ProductTrait
      *
      * @return string|null
      */
-    protected function getProdctDescription($request): ?string
+    protected function getProductDescription($request): ?string
     {
         return $request->has('product_desc') ? $request->get('product_desc') : null;
     }
@@ -67,7 +67,7 @@ trait ProductTrait
      *
      * @return string|null
      */
-    protected function getProdctPrice($request): ?string
+    protected function getProductPrice($request): ?string
     {
         return $request->has('product_price') ? $request->get('product_price') : null;
     }

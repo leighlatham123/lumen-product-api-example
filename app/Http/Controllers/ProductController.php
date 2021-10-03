@@ -90,8 +90,8 @@ class ProductController extends Controller implements CrudInterface
         $product_data = array(
             'id'            => $this->getProductId($this->_req),
             'product_name'  => $this->getProductName($this->_req),
-            'product_desc'  => $this->getProdctDescription($this->_req),
-            'product_price' => $this->getProdctPrice($this->_req),
+            'product_desc'  => $this->getProductDescription($this->_req),
+            'product_price' => $this->getProductPrice($this->_req),
         );
 
         $product = self::$_product->update(
