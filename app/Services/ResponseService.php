@@ -5,7 +5,7 @@ namespace App\Services;
 class ResponseService
 {
     /**
-     * Undocumented function
+     * Create a JSON response
      *
      * @param boolean $validity Valid boolean response validity value
      * @param array   $data     An array of data to be returned in the response
@@ -13,14 +13,14 @@ class ResponseService
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function generateJsonResponse(bool $validity, array $data, int $status)
+    public function generateJsonResponse(bool $validity, array $data, int $status = 200)
     {
         return response()->json(
             [
                 'isvalid'   => $validity,
                 'data'      => $data,
                 'status'    => $status
-            ], 200
+            ], $status
         );
     }
 }

@@ -30,7 +30,7 @@ class ProductService
      * Create product in Product model by category string value
      *
      * @param string $category Valid category string value
-     * @param array  $data     Valid name string value or null
+     * @param array  $data     An array of product data values
      *
      * @return array
      */

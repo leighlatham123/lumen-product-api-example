@@ -28,3 +28,12 @@ $router->group(
     }
 );
 
+$router->group(
+    ['prefix' => 'translation', 'middleware' => ['auth:api']], function () use ($router) {
+        $router->post('create',     'TranslationController@create');
+        $router->get('read',        'TranslationController@read');
+        $router->post('update',     'TranslationController@update');
+        $router->delete('delete',   'TranslationController@delete');
+    }
+);
+

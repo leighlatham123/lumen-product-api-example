@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Services;
 use App\Traits\ProductTrait;
 use Illuminate\Http\Request;
+use App\Traits\ResponseTrait;
 use App\Interfaces\CrudInterface;
 
 class ProductController extends Controller implements CrudInterface
@@ -17,7 +18,7 @@ class ProductController extends Controller implements CrudInterface
     private static $_response;
     private static $_translate;
 
-    use ProductTrait;
+    use ProductTrait, ResponseTrait;
 
     /**
      * Product Controller Constructor Method
