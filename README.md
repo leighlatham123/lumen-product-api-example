@@ -46,7 +46,7 @@ To expand localisation, simply make the following changes.
 ### Supported Commands
 This applications API works on a CRUD storage methodology
 
-You can either generate your own requests in your code or favourite request tool, or you may import and utilise the attached Postman collection in the 'test' directory in application root.
+You can either generate your own requests in your code or favourite request tool, or you may import and utilise the attached Postman collection in the 'test' directory in application root. Make sure you modify the Postman environment variables **lumen_product_api_url**, **lumen_product_api_user** and **lumen_product_api_pass** to match your own environment.
 
 #### Read products (GET) by category and (optional) product_name
 ```
