@@ -1,0 +1,518 @@
+{
+	"info": {
+		"_postman_id": "97b1ddfd-239a-49f2-ad3e-14b50c321f35",
+		"name": "Procook Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "createProducts",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Language",
+								"value": "fr",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"product_category\": \"Category1\",\n    \"product_name\": \"Test API product\",\n    \"product_desc\": \"Test API product description\",\n    \"product_price\": \"07.90\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{lumen_product_api_url}}/product/create",
+							"host": [
+								"{{lumen_product_api_url}}"
+							],
+							"path": [
+								"product",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "readProducts",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {},
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Language",
+								"value": "fr",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"product_category\": \"Category2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{lumen_product_api_url}}/product/read",
+							"host": [
+								"{{lumen_product_api_url}}"
+							],
+							"path": [
+								"product",
+								"read"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateProducts",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Language",
+								"value": "fr",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 3,\n    \"product_category\": \"Category1\",\n    \"product_name\": \"Test API product\",\n    \"product_desc\": \"Test API product description\",\n    \"product_price\": \"09.90\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{lumen_product_api_url}}product/update",
+							"host": [
+								"{{lumen_product_api_url}}product"
+							],
+							"path": [
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteProducts",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Language",
+								"value": "fr",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 3,\n    \"product_category\": \"Category1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{lumen_product_api_url}}/product/delete",
+							"host": [
+								"{{lumen_product_api_url}}"
+							],
+							"path": [
+								"product",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Translations",
+			"item": [
+				{
+					"name": "createTranslations",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Language",
+								"value": "fr",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"product_id\": 2,\n    \"language_id\": 1,\n    \"product_name_translation\": \"Un autre produit\",\n    \"product_desc_translation\": \"Deuxième description\",\n    \"product_category_translation\": \"Catégorie1\",\n    \"product_price_translation\": \"11.68\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{lumen_product_api_url}}/translation/create",
+							"host": [
+								"{{lumen_product_api_url}}"
+							],
+							"path": [
+								"translation",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "readTranslations",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {},
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Language",
+								"value": "fr",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"product_id\": 2,\n    \"language_id\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{lumen_product_api_url}}/translation/read",
+							"host": [
+								"{{lumen_product_api_url}}"
+							],
+							"path": [
+								"translation",
+								"read"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateTranslations",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Language",
+								"value": "fr",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"product_id\": 2,\n    \"language_id\": 1,\n    \"product_name_translation\": \"Un autre produit\",\n    \"product_desc_translation\": \"Deuxième description\",\n    \"product_category_translation\": \"Catégorie3\",\n    \"product_price_translation\": \"11.68\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{lumen_product_api_url}}/translation/update",
+							"host": [
+								"{{lumen_product_api_url}}"
+							],
+							"path": [
+								"translation",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteTranslations",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Language",
+								"value": "fr",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"product_id\": 1,\n    \"language_id\": 3\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{lumen_product_api_url}}/translation/delete",
+							"host": [
+								"{{lumen_product_api_url}}"
+							],
+							"path": [
+								"translation",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Languges",
+			"item": [
+				{
+					"name": "createLanguages",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Language",
+								"value": "fr",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"locale\": \"gr\",\n    \"name\": \"German\",\n    \"date_format\": \"dd/mm/yyyy\",\n    \"currency\": \"EUR\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{lumen_product_api_url}}/language/create",
+							"host": [
+								"{{lumen_product_api_url}}"
+							],
+							"path": [
+								"language",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "readLanguages",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {},
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Language",
+								"value": "fr",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"locale\": \"fr\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{lumen_product_api_url}}/language/read",
+							"host": [
+								"{{lumen_product_api_url}}"
+							],
+							"path": [
+								"language",
+								"read"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateLanguages",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Language",
+								"value": "fr",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"locale\": \"gr\",\n    \"name\": \"German\",\n    \"date_format\": \"yyyy/mm/dd\",\n    \"currency\": \"EUR\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{lumen_product_api_url}}/language/update",
+							"host": [
+								"{{lumen_product_api_url}}"
+							],
+							"path": [
+								"language",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteLanguages",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Language",
+								"value": "fr",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"locale\": \"gr\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{lumen_product_api_url}}/language/delete",
+							"host": [
+								"{{lumen_product_api_url}}"
+							],
+							"path": [
+								"language",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "{{lumen_product_api_pass}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{lumen_product_api_user}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "lumen_product_api_url",
+			"value": "{{APP_URL_HERE}}"
+		},
+		{
+			"key": "lumen_product_api_user",
+			"value": "test_user"
+		},
+		{
+			"key": "lumen_product_api_pass",
+			"value": "test_pass"
+		}
+	]
+}
