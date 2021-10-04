@@ -94,15 +94,11 @@ class LanguageController extends Controller implements CrudInterface
     {
         self::$_request->validateRequest($this->_req, $this->getDeleteLanguageRules());
 
-        $product_data = array(
-            'product_id'    => $this->getProductId($this->_req),
-            'language_id'   => $this->getLanguageId($this->_req),
+        $language_data = array(
+            'locale'        => $this->getLanguageLocale($this->_req),
         );
 
-        self::$_language->delete(
-            $product_data['product_id'],
-            $product_data['language_id'],
-        );
+        self::$_language->delete($language_data['locale']);
 
         return $this->createResponse(self::$_response, ['result' => 'success']);
     }

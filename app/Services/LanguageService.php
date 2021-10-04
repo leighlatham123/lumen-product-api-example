@@ -184,7 +184,7 @@ class LanguageService
     {
         try
         {
-            $removed = self::$_language::whereProductId($locale)
+            $removed = self::$_language::whereLocale($locale)
                 ->delete();
         }
         catch(ModelNotFoundException $e)
