@@ -21,10 +21,10 @@ class TranslationService
      */
     public function __construct()
     {
-        self::$_log                 = new Log;
-        self::$_translation         = new Translation;
+        self::$_log             = new Log;
+        self::$_translation     = new Translation;
 
-        $this->_log_channel         = 'translation';
+        $this->_log_channel     = 'translation';
     }
 
     /**

@@ -2,76 +2,52 @@
 
 namespace App\Traits;
 
-trait TranslationTrait
+trait LanguageTrait
 {
     /**
-     * Get the product id if present in the provided request
-     *
-     * @param Request $request Valid request object
-     *
-     * @return int|null
-     */
-    protected function getProductId($request): ?int
-    {
-        return $request->has('product_id') ? $request->get('product_id') : null;
-    }
-
-    /**
-     * Get the language id if present in the provided request
-     *
-     * @param Request $request Valid request object
-     *
-     * @return int|null
-     */
-    protected function getLanguageId($request): ?int
-    {
-        return $request->has('language_id') ? $request->get('language_id') : null;
-    }
-
-    /**
-     * Get the product name tranlsation if present in the provided request
+     * Get the language locale if present in the provided request
      *
      * @param Request $request Valid request object
      *
      * @return string|null
      */
-    protected function getProductName($request): ?string
+    protected function getLanguageLocale($request): ?string
     {
         return $request->has('product_name_translation') ? $request->get('product_name_translation') : null;
     }
 
     /**
-     * Get the product category tranlsation if present in the provided request
+     * Get the language name if present in the provided request
      *
      * @param Request $request Valid request object
      *
      * @return string|null
      */
-    protected function getProductCategory($request): ?string
+    protected function getLanguageName($request): ?string
     {
         return $request->has('product_category_translation') ? $request->get('product_category_translation') : null;
     }
 
     /**
-     * Get the product description tranlsation if present in the provided request
+     * Get the language date format if present in the provided request
      *
      * @param Request $request Valid request object
      *
      * @return string|null
      */
-    protected function getProductDescription($request): ?string
+    protected function getLanguageDateFormat($request): ?string
     {
         return $request->has('product_desc_translation') ? $request->get('product_desc_translation') : null;
     }
 
     /**
-     * Get the product price tranlsation if present in the provided request
+     * Get the language currency if present in the provided request
      *
      * @param Request $request Valid request object
      *
      * @return string|null
      */
-    protected function getProductPrice($request): ?string
+    protected function getLanguageCurrency($request): ?string
     {
         return $request->has('product_price_translation') ? $request->get('product_price_translation') : null;
     }
@@ -81,7 +57,7 @@ trait TranslationTrait
      *
      * @return array
      */
-    protected function getCreateProductTranslationRules()
+    protected function getCreateLanguageRules()
     {
         return array(
             'product_id'                    => 'required|integer',
@@ -101,7 +77,7 @@ trait TranslationTrait
      *
      * @return array
      */
-    protected function getReadProductTranslationRules()
+    protected function getReadLanguageRules()
     {
         return array(
             'product_id'                    => 'required|integer',
@@ -114,7 +90,7 @@ trait TranslationTrait
      *
      * @return array
      */
-    protected function getUpdateProductTranslationRules()
+    protected function getUpdateLanguageRules()
     {
         return array(
             'product_id'        => [
@@ -125,22 +101,22 @@ trait TranslationTrait
                 'required',
                 'integer',
             ],
-            'product_name_translation'      => [
+            'product_name'      => [
                 'sometimes',
                 'string',
                 'max:255',
             ],
-            'product_desc_translation'      => [
+            'product_desc'      => [
                 'sometimes',
                 'string',
                 'max:255',
             ],
-            'product_category_translation'  => [
+            'product_category'  => [
                 'sometimes',
                 'string',
                 'max:20',
             ],
-            'product_price_translation'     => [
+            'product_price'     => [
                 'sometimes',
                 'regex:/^-?(?:\d+|\d*\.\d+)$/'
             ]
@@ -152,7 +128,7 @@ trait TranslationTrait
      *
      * @return array
      */
-    protected function getDeleteProductTranslationRules()
+    protected function getDeleteLanguageRules()
     {
         return array(
             'product_id'        => [
