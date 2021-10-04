@@ -13,7 +13,7 @@ trait LanguageTrait
      */
     protected function getLanguageLocale($request): ?string
     {
-        return $request->has('product_name_translation') ? $request->get('product_name_translation') : null;
+        return $request->has('locale') ? $request->get('locale') : null;
     }
 
     /**
@@ -25,7 +25,7 @@ trait LanguageTrait
      */
     protected function getLanguageName($request): ?string
     {
-        return $request->has('product_category_translation') ? $request->get('product_category_translation') : null;
+        return $request->has('name') ? $request->get('name') : null;
     }
 
     /**
@@ -37,7 +37,7 @@ trait LanguageTrait
      */
     protected function getLanguageDateFormat($request): ?string
     {
-        return $request->has('product_desc_translation') ? $request->get('product_desc_translation') : null;
+        return $request->has('date_format') ? $request->get('date_format') : null;
     }
 
     /**
@@ -49,7 +49,7 @@ trait LanguageTrait
      */
     protected function getLanguageCurrency($request): ?string
     {
-        return $request->has('product_price_translation') ? $request->get('product_price_translation') : null;
+        return $request->has('currency') ? $request->get('currency') : null;
     }
 
     /**
@@ -60,15 +60,10 @@ trait LanguageTrait
     protected function getCreateLanguageRules()
     {
         return array(
-            'product_id'                    => 'required|integer',
-            'language_id'                   => 'required|integer',
-            'product_name_translation'      => 'required|string|max:255',
-            'product_desc_translation'      => 'required|string|max:255',
-            'product_category_translation'  => 'required|string|max:20',
-            'product_price_translation'     => [
-                    'required',
-                    'regex:/^-?(?:\d+|\d*\.\d+)$/'
-                ]
+            'locale'        => 'required|string|max:10',
+            'name'          => 'required|string|max:255',
+            'date_format'   => 'required|string|max:255',
+            'currency'      => 'required|string|max:10',
         );
     }
 
@@ -80,8 +75,7 @@ trait LanguageTrait
     protected function getReadLanguageRules()
     {
         return array(
-            'product_id'                    => 'required|integer',
-            'language_id'                   => 'required|integer',
+            'locale'      => 'required|string|max:10',
         );
     }
 
@@ -93,33 +87,10 @@ trait LanguageTrait
     protected function getUpdateLanguageRules()
     {
         return array(
-            'product_id'        => [
-                'required',
-                'integer',
-            ],
-            'language_id'        => [
-                'required',
-                'integer',
-            ],
-            'product_name'      => [
-                'sometimes',
-                'string',
-                'max:255',
-            ],
-            'product_desc'      => [
-                'sometimes',
-                'string',
-                'max:255',
-            ],
-            'product_category'  => [
-                'sometimes',
-                'string',
-                'max:20',
-            ],
-            'product_price'     => [
-                'sometimes',
-                'regex:/^-?(?:\d+|\d*\.\d+)$/'
-            ]
+            'locale'        => 'required|string|max:10',
+            'name'          => 'sometimes|string|max:255',
+            'date_format'   => 'sometimes|string|max:255',
+            'currency'      => 'sometimes|string|max:10',
         );
     }
 
@@ -131,14 +102,7 @@ trait LanguageTrait
     protected function getDeleteLanguageRules()
     {
         return array(
-            'product_id'        => [
-                'required',
-                'integer',
-            ],
-            'language_id'        => [
-                'required',
-                'integer',
-            ],
+            'locale'        => 'required|string|max:10',
         );
     }
 }

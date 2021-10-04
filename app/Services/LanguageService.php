@@ -60,9 +60,9 @@ class LanguageService
     }
 
     /**
-     * Create product translation in Translation model by language id and product id int values
+     * Create language in Languages model
      *
-     * @param array $data An array of product translation data values
+     * @param array $data An array of language data values
      *
      * @return array
      */
@@ -72,14 +72,12 @@ class LanguageService
         {
             return self::$_language::firstOrCreate(
                 [
-                    'product_id'                    => $data['product_id'],
-                    'language_id'                   => $data['language_id'],
+                    'locale'        => $data['locale'],
                 ],
                 [
-                    'product_name_translation'      => $data['product_name'],
-                    'product_desc_translation'      => $data['product_desc'],
-                    'product_category_translation'  => $data['product_category'],
-                    'product_price_translation'     => $data['product_price'],
+                    'name'          => $data['name'],
+                    'date_format'   => $data['date_format'],
+                    'currency'      => $data['currency'],
                 ]
             )->get()->toArray();
         }
@@ -102,19 +100,17 @@ class LanguageService
     }
 
     /**
-     * Get product(s) translation(s) from Translation model by language id and product id int values
+     * Get language from Languages model by language locale value
      *
-     * @param int $product_id  Valid product id integer value
-     * @param int $language_id Valid language id integer value
+     * @param string $locale Valid locale string value
      *
      * @return array
      */
-    public function read(int $product_id, int $language_id): array
+    public function read(string $locale): array
     {
         try
         {
-            return self::$_language::whereProductId($product_id)
-                ->whereLanguageId($language_id)
+            return self::$_language::whereLocale($locale)
                 ->get()
                 ->toArray();
         }
@@ -137,22 +133,19 @@ class LanguageService
     }
 
     /**
-     * Update product translation in Traslation model by language id and product id int values
+     * Update language in Languages model
      *
-     * @param int   $product_id  Valid product id integer value
-     * @param int   $language_id Valid language id integer value
-     * @param array $data        An array of product data values
+     * @param array $data An array of language data values
      *
      * @return array
      */
-    public function update(int $product_id, int $language_id, array $data): array
+    public function update(array $data): array
     {
         $values = array_filter($data);
 
         try
         {
-            $product = self::$_language::whereProductId($product_id)
-                ->whereLanguageId($language_id)
+            $product = self::$_language::whereLocale($data['locale'])
                 ->firstOrFail();
 
             $product->update($values);
@@ -181,19 +174,17 @@ class LanguageService
     }
 
     /**
-     * Delete product translation from Translation model by language id and product id int values
+     * Delete language from Languages model using category string value
      *
-     * @param int $product_id  Valid product id integer value
-     * @param int $language_id Valid language id integer value
+     * @param string $locale Valid locale string value
      *
      * @return void
      */
-    public function delete(int $product_id, int $language_id): void
+    public function delete(string $locale): void
     {
         try
         {
-            $removed = self::$_language::whereProductId($product_id)
-                ->whereLanguageId($language_id)
+            $removed = self::$_language::whereProductId($locale)
                 ->delete();
         }
         catch(ModelNotFoundException $e)

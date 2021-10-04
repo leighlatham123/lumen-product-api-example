@@ -37,3 +37,12 @@ $router->group(
     }
 );
 
+$router->group(
+    ['prefix' => 'language', 'middleware' => ['auth:api']], function () use ($router) {
+        $router->post('create',     'LanguageController@create');
+        $router->get('read',        'LanguageController@read');
+        $router->post('update',     'LanguageController@update');
+        $router->delete('delete',   'LanguageController@delete');
+    }
+);
+

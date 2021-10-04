@@ -4,6 +4,7 @@ namespace App\Services;
 
 use Exception;
 use App\Models\Translation;
+use App\Services\LanguageService;
 use Illuminate\Support\Facades\Log;
 use App\Exceptions\UnhandledException;
 use App\Exceptions\ModelRemovalException;
@@ -15,16 +16,36 @@ class TranslationService
     private static $_log;
     private $_log_channel;
     private static $_translation;
+    private static $_language_service;
 
     /**
      * Translation Service Constructor Method
      */
     public function __construct()
     {
-        self::$_log             = new Log;
-        self::$_translation     = new Translation;
+        self::$_log                 = new Log;
+        self::$_translation         = new Translation;
+        self::$_language_service    = new LanguageService;
 
-        $this->_log_channel     = 'translation';
+        $this->_log_channel         = 'translation';
+    }
+
+    /**
+     * Translate the values of a given array by a specified locale
+     *
+     * @param array  $product_ids Array of product IDs of which to translate
+     * @param string $locale      Valid locale string value
+     *
+     * @return array
+     */
+    public function translateProducts(array $product_ids, string $locale): array
+    {
+        $this->_language = self::$_language_service->getLanguage($locale);
+
+        return self::$_translation::whereIn('product_id', $product_ids)
+            ->whereLanguageId($this->_language['id'])
+            ->get()
+            ->toArray();
     }
 
     /**

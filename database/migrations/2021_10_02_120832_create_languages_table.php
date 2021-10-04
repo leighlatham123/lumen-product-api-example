@@ -16,10 +16,10 @@ class CreateLanguagesTable extends Migration
         Schema::create(
             'languages', function (Blueprint $table) {
                 $table->id()->nullable(false);
-                $table->string('locale', 20)->nullable(false);
+                $table->string('locale', 10)->nullable(false)->unique();
                 $table->string('name', 255)->nullable(false);
                 $table->string('date_format', 255)->nullable(false);
-                $table->string('currency', 255)->nullable(false);
+                $table->string('currency', 10)->nullable(false);
             }
         );
     }

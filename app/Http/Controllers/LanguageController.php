@@ -42,18 +42,16 @@ class LanguageController extends Controller implements CrudInterface
     {
         self::$_request->validateRequest($this->_req, $this->getCreateLanguageRules());
 
-        $product_data = array(
-            'product_id'        => $this->_req['product_id'],
-            'language_id'       => $this->_req['language_id'],
-            'product_name'      => $this->_req['product_name_translation'],
-            'product_category'  => $this->_req['product_category_translation'],
-            'product_desc'      => $this->_req['product_desc_translation'],
-            'product_price'     => $this->_req['product_price_translation'],
+        $language_data = array(
+            'locale'        => $this->_req['locale'],
+            'name'          => $this->_req['name'],
+            'date_format'   => $this->_req['date_format'],
+            'currency'      => $this->_req['currency'],
         );
 
-        $product_translation = self::$_language->create($product_data);
+        $language = self::$_language->create($language_data);
 
-        return $this->createResponse(self::$_response, $product_translation);
+        return $this->createResponse(self::$_response, $language);
     }
 
     /**
@@ -63,11 +61,11 @@ class LanguageController extends Controller implements CrudInterface
     {
         self::$_request->validateRequest($this->_req, $this->getReadLanguageRules());
 
-        $products = self::$_language->read(
-            $this->getProductId($this->_req),
-            $this->getLanguageId($this->_req)
+        $language_data = self::$_language->read(
+            $this->getLanguageLocale($this->_req)
         );
-        return $this->createResponse(self::$_response, $products);
+
+        return $this->createResponse(self::$_response, $language_data);
     }
 
     /**
@@ -77,22 +75,16 @@ class LanguageController extends Controller implements CrudInterface
     {
         self::$_request->validateRequest($this->_req, $this->getUpdateLanguageRules());
 
-        $product_data = array(
-            'product_id'                    => $this->getProductId($this->_req),
-            'language_id'                   => $this->getLanguageId($this->_req),
-            'product_name_translation'      => $this->getProductName($this->_req),
-            'product_desc_translation'      => $this->getProductDescription($this->_req),
-            'product_category_translation'  => $this->getProductCategory($this->_req),
-            'product_price_translation'     => $this->getProductPrice($this->_req),
+        $language_data = array(
+            'locale'        => $this->_req['locale'],
+            'name'          => $this->_req['name'],
+            'date_format'   => $this->_req['date_format'],
+            'currency'      => $this->_req['currency'],
         );
 
-        $product = self::$_language->update(
-            $product_data['product_id'],
-            $product_data['language_id'],
-            $product_data
-        );
+        $language = self::$_language->update($language_data);
 
-        return $this->createResponse(self::$_response, $product);
+        return $this->createResponse(self::$_response, $language);
     }
 
     /**

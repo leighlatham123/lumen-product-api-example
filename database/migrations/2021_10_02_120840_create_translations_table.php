@@ -19,8 +19,8 @@ class CreateTranslationsTable extends Migration
                 $table->bigInteger('language_id')->unsigned()->nullable(false);
                 $table->bigInteger('product_id')->unsigned()->nullable(false);
                 $table->string('product_name_translation', 255)->nullable(false);
-                $table->string('product_desc_translation', 255)->nullable(false);
-                $table->string('product_category_translation', 255)->nullable(false);
+                $table->text('product_desc_translation')->nullable(false);
+                $table->string('product_category_translation', 20)->nullable(false);
                 $table->float('product_price_translation')->nullable();
                 $table->foreign('product_id')->references('id')->on('products');
                 $table->foreign('language_id')->references('id')->on('languages');
